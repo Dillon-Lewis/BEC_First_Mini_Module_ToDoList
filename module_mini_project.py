@@ -18,11 +18,11 @@ Welcome to TooDoo, the next step in To-Do list Apps!
             elif ans == '3':
                  view_check()                                                           # View your TooDoos and Mark complete
             elif ans == '4':
-                print("Finish those TooDoo's and I'll see you after completion!")       # Quiting the program   
+                print("\nFinish those TooDoo's and I'll see you after completion!")       # Quiting the program   
                 break
-            elif ans > 4:
-                print("Enter a valid input")                                            #  If they enter a number greater then 5 it wont work
-                continue
+            else:
+                 print('\nEnter a valid number')
+                 continue
         
 
 def add_toodoo():
@@ -34,9 +34,9 @@ What is the task you would like to complete:
     ''').upper()                                                                            # First I am going to set my key by asking for the Task at hand
         priority = input('''
 And and what priority would you like set you TooDoo at:
-        LOW         or          HIGH                     
+        Low         or          High                     
                                            
-        ''')                                                                                # Next I will set the value as the priority   
+        ''').title()                                                                                # Next I will set the value as the priority   
         print(f'\nTooDoo: {toodoo} \nPriority: {priority}')
         correct_info = input('Is everything looking correct? Yes or No\n').upper()          # Make sure the informations is correct
         if correct_info == 'YES':
@@ -59,7 +59,7 @@ Before deleting a TooDoo, we reccomend completing it first!
             print("Congrats! Lets get rid that task for you")
             keylist = list(TooDooList.keys())
             print(keylist)
-            remove = input('Which TooDoo would you like to remove:\n').upper()              # Using .Upper(), I can avoid some errors
+            remove = input('Which TooDoo would you like to remove:\n').title()              # Using .Upper(), I can avoid some errors
             if remove in TooDooList.keys(): 
                 TooDooList.pop(remove, " Please check spelling and reenter TooDoo you would like to remove")
                 print(remove + ' has been removed from your TooDoo List!')
@@ -93,15 +93,20 @@ Have you completed any tasks you want to check off the list!?
         if completed == 'YES':                                                                          # Ask if task is completed
             keylist = list(TooDooList.keys())
             print(keylist)
-            checked = input("\nAwesome! Which TooDoo would you like to check off\n").upper()                # If Yes, I compare input to keys in my to do list
+            checked = input("\nAwesome! Which TooDoo would you like to check off\n").title()                # If Yes, I compare input to keys in my to do list
             if checked in TooDooList.keys():
-                TooDooList[checked] = "XXDoneXX"
+                TooDooList[checked] = "Done XX"
                 print("Awesome!! We will mark ", checked, " as done!")                                      # Once key is verified, I will change its value to XXDoneXX 
                 break
         elif completed == 'NO':                                     # If the user selects no, they are sent to main
              return main()
+        else:
+             print('Enter a valid input!')
+             continue
+             
 
 
 
 main()
+
 
